@@ -1,0 +1,18 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: app-clone-run
+  labels:
+    tekton.dev/pipeline: app-clone
+spec:
+  serviceAccountName: github-bot
+  pipelineRef:
+    name: app-clone
+  params:
+    - name: private-github-repo-url
+      value: https://github.com/mshaposhnik/tekton-tutorial-greeter
+  workspaces:
+    - name: source
+      persistentVolumeClaim:
+        claimName: tekton-tutorial-sources
+
