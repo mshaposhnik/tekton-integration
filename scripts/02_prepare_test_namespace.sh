@@ -39,4 +39,8 @@ kubectl apply -n $NS https://raw.githubusercontent.com/redhat-scholars/tekton-tu
 echo "Preparing maven"
 kubectl create -n $NS cm maven-settings --from-file=settings.xml=/maven/maven-settings.xml
 
-echo "Done."
+echo "Creating SA for Git and Docker"
+kubectl create sa -n $NS github-bot
+kubectl create sa -n $NS build-bot
+
+echo "Done. You may create secrets and pipelines now."

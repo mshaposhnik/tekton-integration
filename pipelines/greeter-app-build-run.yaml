@@ -10,7 +10,7 @@ spec:
     name: greeter-app-build
   params:
     - name: image-name
-      value: quay.io/mshaposh/tekton-tutorial-greeter:latest
+      value: quay.io/mshaposhnik/tekton-tutorial-greeter:latest
   workspaces:
     - name: maven-settings
       configmap:
